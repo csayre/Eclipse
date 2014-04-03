@@ -1,0 +1,5 @@
+write checks for selected space
+get user to select space
+if spot checked is a mine end loop asking for input. 
+	Return boolean statement to view 
+	return false to the controller 
