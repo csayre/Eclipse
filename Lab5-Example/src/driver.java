@@ -9,7 +9,7 @@ public class driver {
 
 	public static void main(String[] args) throws Exception {
 
-		FileInputStream file = new FileInputStream("/Users/ChrisSayre/Documents/Eclipse/Lab5/res/Airports.txt");
+		FileInputStream file = new FileInputStream("res/Airports.txt");
 		Scanner scan = new Scanner(file);
 		while(scan.hasNext())
 		{
