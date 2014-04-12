@@ -9,7 +9,7 @@ public class driver {
 
 	public static void main(String[] args) throws Exception {
 
-			String JSonString = readURL("http://api.geonames.org/weatherIcaoJSON?ICAO=KROA&formatted=true&username=csayre");
+			String JSonString = readURL("http://api.geonames.org/weatherIcaoJSON?ICAO="+"KROA"+"&formatted=true&username=csayre");
 			JSONObject x = JSONObject.fromObject(JSonString);
 			JSONObject weatherData =(JSONObject)(x.get("weatherObservation")); 
 			System.out.println("Weather data for " + weatherData.get("stationName"));

@@ -1,19 +1,26 @@
-
 import java.net.*;
 import java.util.Scanner;
 import java.io.*;
 import net.sf.json.*;
 import org.apache.commons.lang.exception.*;
 
-public class driver {
+public class Driver {
 
 	public static void main(String[] args) throws Exception {
 
-			String JSonString = readURL("http://api.geonames.org/weatherIcaoJSON?ICAO=KROA&formatted=true&username=csayre");
+		FileInputStream file = new FileInputStream("res/Airports.txt");
+		Scanner scan = new Scanner(file);
+		while(scan.hasNext())
+		{
+			String name = scan.next();
+			System.out.println(name);
+			String JSonString = readURL("http://api.geonames.org/weatherIcaoJSON?ICAO="+name+"&formatted=true&username=csayre");
 			JSONObject x = JSONObject.fromObject(JSonString);
 			JSONObject weatherData =(JSONObject)(x.get("weatherObservation")); 
 			System.out.println("Weather data for " + weatherData.get("stationName"));
 			System.out.println("Temperature is " + weatherData.get("temperature") + " degrees (Celsius) with " + weatherData.get("clouds"));
+		}
+		scan.close();
 	}
 
 
