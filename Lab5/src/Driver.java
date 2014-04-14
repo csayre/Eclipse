@@ -10,24 +10,39 @@ public class Driver {
 
 		FileInputStream file = new FileInputStream("res/Airports.txt");
 		Scanner scan = new Scanner(file);
-		while(scan.hasNext())
+		OutputStreamWriter osw = null;
+		try {
+		     File statText = new File("res/output.txt");
+		        FileOutputStream is = new FileOutputStream(statText);
+		        osw = new OutputStreamWriter(is); 
+			while(scan.hasNext())
+			{
+				String name = scan.next();
+				String JSonString = readURL("http://api.geonames.org/weatherIcaoJSON?ICAO="+name+"&formatted=true&username=csayre");
+				JSONObject x = JSONObject.fromObject(JSonString);
+				JSONObject weatherData =(JSONObject)(x.get("weatherObservation")); 
+				if(x.get("weatherObservation") == null)
+				{
+					System.out.println("No data found");
+				}
+				else
+				{
+					osw.write("Weather data for " + weatherData.get("stationName")+"\n");
+					osw.write("Temperature is " + weatherData.get("temperature") + " degrees (Celsius) with " + weatherData.get("clouds")+"\n");
+					osw.write("\n");
+				}
+			}	
+			scan.close();
+		}
+		catch(IOException e)
 		{
-			String name = scan.next();
-			String JSonString = readURL("http://api.geonames.org/weatherIcaoJSON?ICAO="+name+"&formatted=true&username=csayre");
-			JSONObject x = JSONObject.fromObject(JSonString);
-			JSONObject weatherData =(JSONObject)(x.get("weatherObservation")); 
-			if(x.get("weatherObservation") == null)
-			{
-				System.out.println("No data found");
-			}
-			else
-			{
-				System.out.println("Weather data for " + weatherData.get("stationName"));
-				System.out.println("Temperature is " + weatherData.get("temperature") + " degrees (Celsius) with " + weatherData.get("clouds"));	
-			}
-			System.out.println();
-		}	
-		scan.close();
+
+		}
+		finally
+		{
+
+			try {osw.close();} catch (Exception ex) {}
+		}
 	}
 
 
@@ -47,5 +62,3 @@ public class Driver {
 		return result;
 	}
 }
-
-
