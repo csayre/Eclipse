@@ -81,7 +81,7 @@ public class ObjectView {
 			else
 			{
 				int collision = temp.getCollisionCount();
-				temp.setCollisionCount(collision - 1);
+				temp.setCollisionCount(collision - 1) ;
 			}
 
 		}
