@@ -1,0 +1,25 @@
+/**
+ * 
+ */
+package de.ifgl.lodnasa.tutorial;
+
+import javax.swing.JFrame;
+
+import gov.nasa.worldwind.BasicModel;
+import gov.nasa.worldwind.awt.WorldWindowGLCanvas;
+
+/**
+ * @author csayre
+ *
+ */
+public class SimpleExample extends JFrame {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

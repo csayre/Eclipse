@@ -1,7 +1,10 @@
+import java.awt.Toolkit;
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URL;
+import java.net.URLConnection;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -26,9 +29,10 @@ public class View {
 	{
 		try
 		{
-			String JSonString = readURL("https://maps.googleapis.com/maps/api/js?key=AIzaSyCswB_VbZLtqmzcMMu-_uCiWXgobq-KhzY&sensor=TRUE");
-			JSONObject x = JSONObject.fromObject(JSonString);
-			System.out.println(x);
+			
+//			String JSonString = readURL("https://maps.googleapis.com/maps/api/js?key=AIzaSyCswB_VbZLtqmzcMMu-_uCiWXgobq-KhzY&sensor=/x27true/x27");
+//			JSONObject x = JSONObject.fromObject(JSonString);
+//			System.out.println(x);
 			
 //			JSONObject weatherData =(JSONObject)(x.get("weatherObservation")); 
 //			if(x.get("weatherObservation") == null)
