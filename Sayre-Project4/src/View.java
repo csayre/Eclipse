@@ -21,24 +21,26 @@ import net.sf.json.JSONObject;
 
 public class View {
 
-
+//google api key: AIzaSyCswB_VbZLtqmzcMMu-_uCiWXgobq-KhzY
 	public View() throws Exception
 	{
 		try
 		{
-			String JSonString = readURL("http://api.geonames.org/weatherIcaoJSON?ICAO=KROA&formatted=true&username=csayre");
+			String JSonString = readURL("https://maps.googleapis.com/maps/api/js?key=AIzaSyCswB_VbZLtqmzcMMu-_uCiWXgobq-KhzY&sensor=TRUE");
 			JSONObject x = JSONObject.fromObject(JSonString);
-			JSONObject weatherData =(JSONObject)(x.get("weatherObservation")); 
-			if(x.get("weatherObservation") == null)
-			{
-				System.out.println("No data found");
-			}
-			else
-			{		
-				System.out.println("Weather data for " + weatherData.get("stationName")+"\n");
-				System.out.println("Temperature is " + weatherData.get("temperature") + " degrees (Celsius) with " + weatherData.get("clouds")+"\n");
-				System.out.println("\n");
-		}
+			System.out.println(x);
+			
+//			JSONObject weatherData =(JSONObject)(x.get("weatherObservation")); 
+//			if(x.get("weatherObservation") == null)
+//			{
+//				System.out.println("No data found");
+//			}
+//			else
+//			{		
+//				System.out.println("Weather data for " + weatherData.get("stationName")+"\n");
+//				System.out.println("Temperature is " + weatherData.get("temperature") + " degrees (Celsius) with " + weatherData.get("clouds")+"\n");
+//				System.out.println("\n");
+//		}
 	}
 	catch(IOException e)
 	{
