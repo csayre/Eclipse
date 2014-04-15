@@ -1,6 +1,13 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.URL;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+
+import net.sf.json.JSONObject;
 
 /**
  * 
@@ -10,37 +17,49 @@ import javax.swing.JPanel;
  * @author ChrisSayre
  *
  */
+
+
 public class View {
-	
-	//constants to represent the frame width and height
-		//notice that they are public
-		public static final int FRAMEHEIGHT = 800;
-		public static final int FRAMEWIDTH = 600;
 
-		//graphical objects declared at class level
-		private JFrame frame = new JFrame();	
-		private JPanel actionPanel = new JPanel();
-		private JPanel playArea = new JPanel();
-		private JButton test;
-		
-		public View()
+
+	public View() throws Exception
+	{
+		try
 		{
-			frame.setLayout(null);
-			actionPanel.setSize(FRAMEWIDTH, 40);
-			actionPanel.setLocation(0, 0);
-			playArea.setSize(FRAMEWIDTH, FRAMEHEIGHT - actionPanel.getHeight());
-			playArea.setLocation(0, actionPanel.getHeight());
-			playArea.setLayout(null);
-			frame.add(actionPanel);
-			frame.add(playArea);
-			frame.setSize(FRAMEWIDTH, FRAMEHEIGHT);
-			frame.setResizable(false);
-			frame.setVisible(true);
-			test = new JButton();
-			
-			actionPanel.add(test);
-			
-			
+			String JSonString = readURL("http://api.geonames.org/weatherIcaoJSON?ICAO=KROA&formatted=true&username=csayre");
+			JSONObject x = JSONObject.fromObject(JSonString);
+			JSONObject weatherData =(JSONObject)(x.get("weatherObservation")); 
+			if(x.get("weatherObservation") == null)
+			{
+				System.out.println("No data found");
+			}
+			else
+			{		
+				System.out.println("Weather data for " + weatherData.get("stationName")+"\n");
+				System.out.println("Temperature is " + weatherData.get("temperature") + " degrees (Celsius) with " + weatherData.get("clouds")+"\n");
+				System.out.println("\n");
 		}
+	}
+	catch(IOException e)
+	{
 
+	}
+}
+
+
+public static String readURL(String webservice) throws Exception {
+	URL oracle = new URL(webservice);
+	BufferedReader in = new BufferedReader(
+			new InputStreamReader(
+					oracle.openStream()));
+
+	String inputLine;
+	String result = "";
+
+	while ((inputLine = in.readLine()) != null)
+		result = result + inputLine;
+
+	in.close();
+	return result;
+}
 }
