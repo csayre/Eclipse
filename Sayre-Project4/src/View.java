@@ -39,8 +39,14 @@ public class View {
 
 			String JSonString = readURL("http://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=5D0615D35FB669702643632129E0CEC9&steamids=76561198008615109");
 			JSONObject x = JSONObject.fromObject(JSonString);
+			JSONObject id =(JSONObject)(x.get("steamid"));
 			System.out.println(x);
-			System.out.println(x.get("steamid"));
+			System.out.println(id);
+			System.out.println(id.toString());
+//			System.out.println(x.size());
+//			System.out.println(x.toString());
+//			System.out.println(x);
+//			System.out.println(id);
 //			if(x.get("weatherObservation") == null)
 //			{
 //				System.out.println("No data found");
