@@ -4,4 +4,7 @@
 <fullyQualifiedTypeName name="java.io.InputStream"/>
 <fullyQualifiedTypeName name="java.awt.Toolkit"/>
 <fullyQualifiedTypeName name="javax.swing.JFrame"/>
+<fullyQualifiedTypeName name="net.sf.json.JSONArray"/>
+<fullyQualifiedTypeName name="com.google.gson.Gson"/>
+<fullyQualifiedTypeName name="com.google.gson.JsonArray"/>
 </qualifiedTypeNameHistroy>

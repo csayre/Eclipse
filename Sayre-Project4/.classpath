@@ -8,5 +8,8 @@
 	<classpathentry kind="lib" path="jars/commons-logging-1.1.1.jar"/>
 	<classpathentry kind="lib" path="jars/ezmorph-1.0.6.jar"/>
 	<classpathentry kind="lib" path="jars/json-lib-2.4-jdk15.jar"/>
+	<classpathentry kind="lib" path="jars/gson-2.2.4-javadoc.jar"/>
+	<classpathentry kind="lib" path="jars/gson-2.2.4-sources.jar"/>
+	<classpathentry kind="lib" path="jars/gson-2.2.4.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
