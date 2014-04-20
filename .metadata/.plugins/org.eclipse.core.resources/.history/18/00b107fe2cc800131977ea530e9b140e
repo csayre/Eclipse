@@ -1,0 +1,90 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.URL;
+
+import net.sf.json.JSONArray;
+import net.sf.json.JSONObject;
+
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
+
+/**
+ * 
+ */
+
+/**
+ * @author ChrisSayre
+ *
+ */
+
+
+public class View {
+
+	//steam api 5D0615D35FB669702643632129E0CEC9
+	
+	/*
+	 * String JSonString = readURL("http://api.geonames.org/weatherIcaoJSON?ICAO="+name+"&formatted=true&username=csayre");
+				JSONObject x = JSONObject.fromObject(JSonString);
+				JSONObject weatherData =(JSONObject)(x.get("weatherObservation")); 
+	 * 
+	 */
+	
+	
+	JSONArray steam;
+	
+	public View() throws Exception
+	{
+		try
+		{
+
+			String JsonString = readURL("http://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=5D0615D35FB669702643632129E0CEC9&steamids=76561198008615109");
+			steam = new JSONArray();
+			JSONObject x = JSONObject.fromObject(JsonString);
+			x.toJSONArray(steam);
+			System.out.println(steam);
+			//steam.addAll();
+//		
+//			//json array then break down w for loop extract data
+//			System.out.println(x);
+//			System.out.println(id);
+//			System.out.println(id.toString());
+//			System.out.println(x.size());
+//			System.out.println(x.toString());
+//			System.out.println(x);
+//			System.out.println(id);
+//			if(x.get("weatherObservation") == null)
+//			{
+//				System.out.println("No data found");
+//			}			
+//			else
+//			{						
+//				System.out.println("Weather data for " + weatherData.get("stationName")+"\n");
+//				System.out.println("Temperature is " + weatherData.get("temperature") + " degrees (Celsius) with " + weatherData.get("clouds")+"\n");
+//				System.out.println("\n");		
+//			}
+		}
+		catch(IOException e)
+		{
+
+		}
+	}
+
+
+	public static String readURL(String webservice) throws Exception {
+		URL oracle = new URL(webservice);
+		BufferedReader in = new BufferedReader(
+				new InputStreamReader(
+						oracle.openStream()));
+
+		String inputLine;
+		String result = "";
+
+		while ((inputLine = in.readLine()) != null)
+			result = result + inputLine;
+
+		in.close();
+		return result;
+	}
+}
