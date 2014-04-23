@@ -50,7 +50,7 @@ public class View {
 		}
 		catch(IOException e)
 		{
-			e.printStackTrace();
+			//e.printStackTrace();
 		}
 	}
 
