@@ -7,9 +7,12 @@
  *
  */
 import java.io.BufferedReader;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.net.URL;
+import java.util.Scanner;
 
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
@@ -31,22 +34,23 @@ public class View {
 
 	public View() throws Exception
 	{
+		FileInputStream file = new FileInputStream("res/steamid.txt");
+		Scanner scan = new Scanner(file);
+		OutputStreamWriter osw = null;
 		try
 		{
-			getUserData("76561198008615109");
-			System.out.println();
-			getFriendsList("76561198008615109");
-			for(int i = 0; i < id.length; i++)
+			while(scan.hasNext())
 			{
+				//System.out.println(scan.hasNext());
+				String steamid = scan.nextLine();
+				getUserData(steamid);
 				System.out.println();
-				getFriendsList(id[i]);
-				getNumberGames(id[i]);
-			}			
-
+				getFriendsList(steamid);
+			}
 		}
 		catch(IOException e)
 		{
-
+			e.printStackTrace();
 		}
 	}
 
@@ -79,9 +83,6 @@ public class View {
 			String steamid = (String) player.get("steamid");
 			String relationship = (String) player.get("relationship");
 			int friendSince = (Integer) player.get("friend_since");
-			id[i] = steamid;
-			getUserData(id[i]);
-			System.out.println();
 		}
 	}
 

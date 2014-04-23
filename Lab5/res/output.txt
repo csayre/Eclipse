@@ -1,18 +1,18 @@
 Weather data for Roanoke, Roanoke Regional Airport
-Temperature is 17.2 degrees (Celsius) with scattered clouds
+Temperature is 10 degrees (Celsius) with few clouds
 
 Weather data for Aquadilla, Rafael Hernandez Airport
-Temperature is 25 degrees (Celsius) with broken clouds
+Temperature is 27 degrees (Celsius) with n/a
 
 Weather data for Fernando Luis Ribas Dominicci Airport
-Temperature is 26 degrees (Celsius) with scattered clouds
+Temperature is 28 degrees (Celsius) with scattered clouds
 
-Weather data for Roosevelt Roads, Roosevelt Roads Naval Station, Ofstie Field
-Temperature is 27.8 degrees (Celsius) with scattered clouds
+Weather data for Mayaguez, Eugenio Maria de Hostos Airport
+Temperature is 25 degrees (Celsius) with few clouds
 
 Weather data for Ponce, Mercedita Airport
-Temperature is 21 degrees (Celsius) with few clouds
+Temperature is 28 degrees (Celsius) with few clouds
 
 Weather data for San Juan, Luis Munoz Marin International Airport
-Temperature is 26.1 degrees (Celsius) with few clouds
+Temperature is 28.3 degrees (Celsius) with few clouds
 
