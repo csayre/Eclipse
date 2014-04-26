@@ -1,18 +1,23 @@
-/**
- * 
- */
 
 /**
  * @author csayre
+ * @version 4/24/2014
+ * @file View.java - runs the program
  *
  */
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.net.URL;
 import java.util.Scanner;
+
+/**
+ * imports json libraries 
+ */
 
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
@@ -22,37 +27,43 @@ import net.sf.json.JSONObject;
 public class View {
 
 	//steam api 5D0615D35FB669702643632129E0CEC9
-	// steam id 76561198008615109
 
-	/*
-	 * 	String JSonString = readURL("http://api.geonames.org/weatherIcaoJSON?ICAO="+name+"&formatted=true&username=csayre");
-	 *	JSONObject x = JSONObject.fromObject(JSonString);
-	 *	JSONObject weatherData =(JSONObject)(x.get("weatherObservation")); 
-	 * 
+	private FileInputStream file = new FileInputStream("res/steamid.txt");
+	private Scanner scan = new Scanner(file);
+	private OutputStreamWriter osw = null;
+	
+	/**
+	 * Constructor for View. This is what runs the program.
+	 * @throws Exception
 	 */
-	String[] id = new String[30];
 
 	public View() throws Exception
 	{
-		FileInputStream file = new FileInputStream("res/steamid.txt");
-		Scanner scan = new Scanner(file);
-		OutputStreamWriter osw = null;
+		File statText = new File("res/output.txt");
+		FileOutputStream writer = new FileOutputStream(statText);
+		osw = new OutputStreamWriter(writer); 
 		try
 		{
 			while(scan.hasNext())
 			{
-				//System.out.println(scan.hasNext());
 				String steamid = scan.nextLine();
 				getUserData(steamid);
-				System.out.println();
+				osw.write("");
 				getFriendsList(steamid);
 			}
 		}
 		catch(IOException e)
 		{
-			//e.printStackTrace();
+			e.printStackTrace();
 		}
 	}
+	
+	/**
+	 * Queries the Steam API and returns information about the user. 
+	 * Writes steamid, username, the state of the user, and the number of games that the user owns to a file. 
+	 * @param userID
+	 * @throws Exception
+	 */
 
 	private void getUserData(String userID) throws Exception
 	{
@@ -62,27 +73,35 @@ public class View {
 		JSONArray players = (JSONArray) response.get("players");
 		JSONObject player = (JSONObject) players.get(0);
 		String steamid = (String) player.get("steamid");
-		System.out.println("Steamid: " + steamid);
+		osw.write("Steamid: " + steamid);
 		String name = (String) player.get("personaname");
-		System.out.println("Player Name: " + name);
+		osw.write("Player Name: " + name);
 		int personaState = (Integer) player.get("personastate");
 		state(personaState);
 		int numGames = this.getNumberGames(steamid);
-		System.out.println("Number of games: " + numGames);
+		osw.write("Number of games: " + numGames);
 	}
 
 	private void getFriendsList(String userID) throws Exception
 	{
-		String JsonStringFriends = readURL("http://api.steampowered.com/ISteamUser/GetFriendList/v0001/?key=5D0615D35FB669702643632129E0CEC9&steamid="+ userID + "&relationship=friend");
-		JSONObject a = JSONObject.fromObject(JsonStringFriends);
-		JSONObject response = (JSONObject) a.get("friendslist");
-		JSONArray friend = (JSONArray) response.get("friends");
-		for(int i = 0; i < friend.size(); i++)
+
+		try
 		{
-			JSONObject player = (JSONObject) friend.get(i);
-			String steamid = (String) player.get("steamid");
-			String relationship = (String) player.get("relationship");
-			int friendSince = (Integer) player.get("friend_since");
+			String JsonStringFriends = readURL("http://api.steampowered.com/ISteamUser/GetFriendList/v0001/?key=5D0615D35FB669702643632129E0CEC9&steamid="+ userID + "&relationship=friend");
+			JSONObject a = JSONObject.fromObject(JsonStringFriends);
+			JSONObject response = (JSONObject) a.get("friendslist");
+			JSONArray friend = (JSONArray) response.get("friends");
+			for(int i = 0; i < friend.size(); i++)
+			{
+				JSONObject player = (JSONObject) friend.get(i);
+				String steamid = (String) player.get("steamid");
+				String relationship = (String) player.get("relationship");
+				int friendSince = (Integer) player.get("friend_since");
+			}
+		}
+		catch(Exception e)
+		{
+			osw.write("User has no friends.");
 		}
 	}
 
@@ -104,35 +123,35 @@ public class View {
 
 	}
 
-	private void state(int input)
+	private void state(int input) throws IOException
 	{
 		if(input == 0)
 		{
-			System.out.println("User is offline");
+			osw.write("User is offline");
 		}
 		else if (input == 1)
 		{
-			System.out.println("User is online");
+			osw.write("User is online");
 		}
 		else if(input == 2)
 		{
-			System.out.println("User is busy");
+			osw.write("User is busy");
 		}
 		else if(input == 3)
 		{
-			System.out.println("User is away");
+			osw.write("User is away");
 		}
 		else if(input == 4)
 		{
-			System.out.println("User is Snoozing");
+			osw.write("User is Snoozing");
 		}
 		else if (input == 5)
 		{
-			System.out.println("User is looking to trade");
+			osw.write("User is looking to trade");
 		}
 		else if(input == 6)
 		{
-			System.out.println("User is looking to play");
+			osw.write("User is looking to play");
 		}
 	}
 
