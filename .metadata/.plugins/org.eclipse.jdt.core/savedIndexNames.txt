@@ -45,46 +45,23 @@ INDEX VERSION 1.126+/Users/chrissayre/Eclipse/.metadata/.plugins/org.eclipse.jdt
 =======
 INDEX VERSION 1.126+C:\Users\csayre\Documents\GitHub\Eclipse\.metadata\.plugins\org.eclipse.jdt.core
 3580456661.index
-1468464265.index
-1079526198.index
-4144984676.index
-138688109.index
 1259207542.index
-3092566098.index
-3836762495.index
-3830457777.index
 1197446240.index
-3526932304.index
 3616350379.index
-176359069.index
-1218509931.index
-2868782490.index
 3961239056.index
 3729834554.index
-1580935392.index
-2673882967.index
 2493638268.index
-1325138003.index
-3554569386.index
-4264927334.index
-2260613207.index
-3845202857.index
-518855737.index
 3876750227.index
-3093364101.index
-916789655.index
 2725142083.index
-3328911905.index
-376273333.index
-3394193205.index
 627166390.index
-370907398.index
-3002277197.index
 2417341189.index
 2037782064.index
+<<<<<<< HEAD
 1883386174.index
 3078469992.index
 4097271504.index
 1168409704.index
 1549014300.index
 >>>>>>> FETCH_HEAD
+=======
+>>>>>>> parent of 3e69729... working with slick
