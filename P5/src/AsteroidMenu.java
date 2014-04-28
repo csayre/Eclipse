@@ -4,9 +4,9 @@ import org.lwjgl.input.Mouse;
 
 public class AsteroidMenu extends BasicGameState
 {
-	private Image ship;
-	private int shipX = 300;
-	private int shipY = 300;
+	Image ship;
+	int shipX = 300;
+	int shipY = 300;
 	
 	public String mouse = "No input yet!";
 	

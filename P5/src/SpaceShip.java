@@ -22,7 +22,7 @@ public class SpaceShip extends Polygon
 		ship = new Polygon();
 		ship.addPoint((x + 22), (y + 33));
 		ship.addPoint((x + 6), (y + 33));
-		ship.addPoint((x+ 14), (y + 31));
+		ship.addPoint((x + 14), (y + 31));
 		ship.addPoint((x + 14), (y + 9));
 		return ship;
 	}

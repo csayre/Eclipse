@@ -5,15 +5,15 @@ import org.newdawn.slick.SlickException;
 
 public class Missile 
 {
-	int missileX;
-	int missileY;
-	float missileDx;
-	float missileDy;
+	private	int missileX;
+	private	int missileY;
+	private	float missileDx;
+	private	float missileDy;
 	private Rectangle missile;
-	
-	
+
+
 	private Image missileImg;
-	
+
 	public Missile() throws SlickException
 	{
 		this.missileX = 350;
@@ -23,7 +23,7 @@ public class Missile
 	public Rectangle Missile()
 	{
 		missile = new Rectangle(2, 4);
-		
+
 		return missile;
 	}
 	public Rectangle getMissile() {

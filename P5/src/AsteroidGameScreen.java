@@ -21,6 +21,7 @@ public class AsteroidGameScreen extends BasicGameState
 
 	private static Image shipImage;
 	private static Image missileImage;
+	private static Image asteroidImage;
 	private SpaceShip s;
 	private Missile m;
 	private int i, x, y;
@@ -34,6 +35,7 @@ public class AsteroidGameScreen extends BasicGameState
 	{
 		s = new SpaceShip(shipX,shipY);
 		m = new Missile();
+		asteroidImage = new Image("res/Asteroid1.png");
 	}
 
 	public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException
@@ -54,9 +56,11 @@ public class AsteroidGameScreen extends BasicGameState
 
 		//m.setMissileImg(missileImage);
 		m.Missile();
-
+		
 		g.drawImage(shipImage, shipX, shipY);
 
+		g.drawImage(asteroidImage, 300, 300);
+		
 		if(shot == true)
 		{
 			g.drawImage(m.getMissileImg(), missileX, missileY - 20);
