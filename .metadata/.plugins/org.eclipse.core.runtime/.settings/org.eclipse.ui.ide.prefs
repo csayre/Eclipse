@@ -2,9 +2,9 @@
 <<<<<<<=HEAD
 >>>>>>>=aa915736d1bae7f1cd1c732bb619f3019d2da5c0
 IMPORT_FILES_AND_FOLDERS_RELATIVE=true
-IMPORT_FILES_AND_FOLDERS_TYPE=23,1
+IMPORT_FILES_AND_FOLDERS_TYPE=23,1\:7,1
 PROBLEMS_FILTERS_MIGRATE=true
 eclipse.preferences.version=1
-platformState=1377528395953
+platformState=1398632241486
 quickStart=false
 tipsAndTricks=true
