@@ -61,7 +61,7 @@ public class AsteroidGameScreen extends BasicGameState
 		g.drawImage(shipImage, shipX, shipY);
 
 		//asteroid
-		ast.draw(100, 200);
+		ast.draw(100, 500);
 		
 		if(shot == true)
 		{

@@ -16,21 +16,14 @@ public class Asteroid extends Polygon{
 	private Polygon ship;
 	private int x,y;
 	private Image shipImg;
-	private Graphics g;
 	
 	//Set image for the ship, then set polygon to around the image inside. Should work, if not then you're fucked
 	
-	/**
-	 * Asteroid constructor
-	 * @param x
-	 * @param y
-	 * @throws SlickException
-	 */
+	
 	public Asteroid(int x,int y) throws SlickException{
 		this.x = x;
 		this.y = y;	
 		shipImg = new Image("res/Asteroid1.png");
-		g = new Graphics();
 	}
 	
 	public Polygon Asteroid(){
@@ -44,12 +37,19 @@ public class Asteroid extends Polygon{
 		asteroid.addPoint(x + 124, y + 118);
 		asteroid.addPoint(x + 120, y + 128);
 		asteroid.addPoint(x + 86, y + 124);
-		asteroid.addPoint(x +  20, y + 123);
+		asteroid.addPoint(x +  , y + );
 		
 		return asteroid;
 	}
 	
-	
+	public Polygon Ship(){
+		ship = new Polygon();
+		ship.addPoint((x + 22), (y + 33));
+		ship.addPoint((x + 6), (y + 33));
+		ship.addPoint((x + 14), (y + 31));
+		ship.addPoint((x + 14), (y + 9));
+		return ship;
+	}
 	public float getX() {
 		return x;
 	}
@@ -73,10 +73,6 @@ public class Asteroid extends Polygon{
 	{
 		return shipImg;
 	}
-	public void draw(int x, int y)
-	{
-		System.out.println(shipImg);
-		g.drawImage(shipImg, x, y);
-	}
+	
 
 }

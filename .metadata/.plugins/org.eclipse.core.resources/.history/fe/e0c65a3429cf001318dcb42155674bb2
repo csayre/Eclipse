@@ -75,7 +75,6 @@ public class Asteroid extends Polygon{
 	}
 	public void draw(int x, int y)
 	{
-		System.out.println(shipImg);
 		g.drawImage(shipImg, x, y);
 	}
 

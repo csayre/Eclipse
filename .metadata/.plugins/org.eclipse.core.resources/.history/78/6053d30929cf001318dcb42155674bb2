@@ -22,7 +22,6 @@ public class AsteroidGameScreen extends BasicGameState
 	private static Image shipImage;
 	private static Image missileImage;
 	private static Image asteroidImage;
-	private Asteroid ast;
 	private SpaceShip s;
 	private Missile m;
 	private int i, x, y;
@@ -60,8 +59,7 @@ public class AsteroidGameScreen extends BasicGameState
 		
 		g.drawImage(shipImage, shipX, shipY);
 
-		//asteroid
-		ast.draw(100, 200);
+		g.drawImage(asteroidImage, 300, 300);
 		
 		if(shot == true)
 		{

@@ -1,0 +1,23 @@
+/**
+ * 
+ */
+
+import org.newdawn.slick.*;
+import org.newdawn.slick.geom.Polygon;
+import org.newdawn.slick.state.*;
+import org.lwjgl.input.Mouse;
+/**
+ * @author chrissayre
+ *
+ */
+public class Asteroid extends Polygon{
+
+	private Polygon asteroid;
+	
+	public Polygon Asteroid(){
+		asteroid = new Polygon();
+		
+		return asteroid;
+	}
+
+}
