@@ -26,6 +26,12 @@ public class AsteroidGameScreen extends BasicGameState
 	private static Image missileImage;
 	private static Image asteroidImage;
 	private Asteroid ast;
+	private Asteroid ast2;
+	private Asteroid ast3;
+	private Asteroid ast4;
+	private Asteroid ast5;
+	private Asteroid ast6;
+	private Asteroid ast7;
 	private SpaceShip s;
 	private Missile m1, m2;
 	private boolean shot1, shot2 = false;
@@ -48,6 +54,12 @@ public class AsteroidGameScreen extends BasicGameState
 		this.m1 = new Missile();
 		this.m2 = new Missile();
 		this.ast = new Asteroid(50, 50);
+		this.ast2 = new Asteroid(50, 50);
+		this.ast3 = new Asteroid(50, 50);
+		this.ast4 = new Asteroid(50, 50);
+		this.ast5 = new Asteroid(50, 50);
+		this.ast6 = new Asteroid(50, 50);
+		this.ast7 = new Asteroid(50, 50);
 		this.lives = 3;
 		this.points = 0;
 		this.asteroidRandX = rand.nextInt(700);
@@ -84,7 +96,14 @@ public class AsteroidGameScreen extends BasicGameState
 		//			// TODO Auto-generated catch block
 		//			e.printStackTrace();
 		//		}
-		ast.draw(asteroidRandX, asteroidY);
+	
+			ast.draw(asteroidRandX, asteroidY);
+			ast2.draw(asteroidRandX, asteroidY);
+			ast3.draw(asteroidRandX, asteroidY);
+			ast4.draw(asteroidRandX, asteroidY);
+			ast5.draw(asteroidRandX, asteroidY);
+			ast6.draw(asteroidRandX, asteroidY);
+			ast7.draw(asteroidRandX, asteroidY);
 
 		if(shot1 == true)
 		{
