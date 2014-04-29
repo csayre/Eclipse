@@ -1,3 +1,5 @@
+
+
 import java.util.LinkedList;
 import java.util.Random;
 
@@ -14,10 +16,10 @@ public class AsteroidGameScreen extends BasicGameState
 
 	private int shipX = 350;
 	private int shipY = 650;
-	private int missileX = shipX;
-	private int missileY = shipY;
+	private int missileX1, missileX2;
+	private int missileY1, missileY2;
 
-
+	private Random rand = new Random();
 	LinkedList<Missile> list = new LinkedList();
 
 	private static Image shipImage;
@@ -25,10 +27,13 @@ public class AsteroidGameScreen extends BasicGameState
 	private static Image asteroidImage;
 	private Asteroid ast;
 	private SpaceShip s;
-	private Missile m;
+	private Missile m1, m2;
+	private boolean shot1, shot2 = false;
+	private int missileCounter = 0;
 	private int i;
 	private int x;
 	private int y;
+	private int asteroidRandX, asteroidY;
 	private boolean shot = false;
 
 	public AsteroidGameScreen(int state)
@@ -38,8 +43,12 @@ public class AsteroidGameScreen extends BasicGameState
 	public void init(GameContainer gc, StateBasedGame sbg) throws SlickException
 	{
 		s = new SpaceShip(shipX,shipY);
-		m = new Missile();
-		ast = new Asteroid(randomX(), randomY());
+		m1 = new Missile();
+		m2 = new Missile();
+		ast = new Asteroid(50, 50);
+		asteroidRandX = rand.nextInt(700);
+		asteroidY = 50;
+
 	}
 
 	public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException
@@ -55,26 +64,33 @@ public class AsteroidGameScreen extends BasicGameState
 
 		addMissiles();
 
+
 		//s.setImage(shipImage);
 		s.Ship();
 
 		//m.setMissileImg(missileImage);
-		m.Missile();
+		m1.Missile();
+		m2.Missile();
 
 		g.drawImage(shipImage, shipX, shipY);
-		try {
-			ast.draw(randomX(), randomY());
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		//		try {
+		//		} catch (InterruptedException e) {
+		//			// TODO Auto-generated catch block
+		//			e.printStackTrace();
+		//		}
+		ast.draw(asteroidRandX, asteroidY);
 
-
-		if(shot == true)
+		if(shot1 == true)
 		{
-			g.drawImage(m.getMissileImg(), missileX, missileY - 20);
+			g.drawImage(m1.getMissileImg(), missileX1, missileY1);
 			//System.out.println("I am here");
 		}
+		if(shot2 == true)
+		{
+			g.drawImage(m2.getMissileImg(), missileX2, missileY2);
+			//System.out.println("pew pew 2");
+		}
+
 	}
 
 	public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException
@@ -90,37 +106,93 @@ public class AsteroidGameScreen extends BasicGameState
 		if(input.isKeyDown(Input.KEY_UP))
 		{
 			shipY -= 1;
+			m1.setMissileY(shipY);
+			m2.setMissileY(shipY);
 		}
 		if(input.isKeyDown(Input.KEY_DOWN))
 		{
 			shipY += 1;
+			m1.setMissileY(shipY);
+			m2.setMissileY(shipY);
 		}
 		if(input.isKeyDown(Input.KEY_LEFT))
 		{	
 			shipX -= 1;
+			m1.setMissileX(shipX);
+			m2.setMissileX(shipX);
 		}	
 		if(input.isKeyDown(Input.KEY_RIGHT))
 		{
 			shipX += 1;
+			m1.setMissileX(shipX);
+			m2.setMissileX(shipX);
 		}
 		if(input.isKeyDown(Input.KEY_G))
 		{
-			System.out.println(shipY);
-			System.out.println(shipX);
+			//			System.out.println(shipY);
+			//			System.out.println(shipX);
+			asteroidY = 200;
 		}
-		if(input.isKeyDown(Input.KEY_SPACE))
+
+		if(input.isKeyPressed(Input.KEY_SPACE))
 		{
-			if(shot == false)
+			missileCounter++;
+			missileY1 = m1.getMissileY();
+			missileX1 = m1.getMissileX();
+			missileY2 = m2.getMissileY();
+			missileX2 = m2.getMissileX();			
+
+			//			System.out.println(missileY1);
+			//			System.out.println(missileY2);
+			//if(ast.getY() == missileY1)
+
+			if(missileCounter %2 == 0)
 			{
-				shot = true;
+				if(shot1 == false)
+				{
+					shot1 = true;
+				}
+			}
+
+			if(missileCounter %2 == 1)
+			{
+				if(shot2 == false)
+				{
+					shot2 = true;
+				}
 			}
 		}
-		if(shot == true)
+		if(missileY1 == 0)
+			shot1 = false;
+		if(missileY2 == 0)
+			shot2 = false;
+		if(shot1 == true)
 		{
-			missileY -= 1;
+			missileY1 -= 1;
 		}
-		if(missileY == 0)
-			shot = false;
+
+		if(shot2 == true)
+		{
+			missileY2 -= 1;
+		}
+
+		if(asteroidY != 0)
+		{
+			try {
+				Thread.sleep(2);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			asteroidY += 1;
+		}
+		if(asteroidY == 699)
+		{
+			asteroidY = 50;
+			asteroidRandX = rand.nextInt(700);
+		}
+
+
 		if(shipX == 0)
 			shipX = 698;
 		if(shipX == 699)
@@ -155,7 +227,7 @@ public class AsteroidGameScreen extends BasicGameState
 		ranX = ran.nextInt(699);
 		return ranX;
 	}
-	
+
 	public int randomY()
 	{
 		// max = 220

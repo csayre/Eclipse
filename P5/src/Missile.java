@@ -1,3 +1,5 @@
+
+
 import java.awt.Rectangle;
 
 import org.newdawn.slick.Image;
@@ -17,7 +19,7 @@ public class Missile
 	public Missile() throws SlickException
 	{
 		this.missileX = 350;
-		this.missileY = 350;
+		this.missileY = 650;
 		missileImg = new Image("res/Missile.png");
 	}
 	public Rectangle Missile()

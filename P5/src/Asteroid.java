@@ -1,3 +1,5 @@
+
+
 /**
  * 
  */
@@ -41,16 +43,16 @@ public class Asteroid extends Polygon{
 	
 	public Polygon Asteroid(){
 		asteroid = new Polygon();
-		asteroid.addPoint(x + 16, y + 23);
-		asteroid.addPoint(x + 66, y + 10);
-		asteroid.addPoint(x + 113, y + 18);
-		asteroid.addPoint(x + 125, y + 76);
-		asteroid.addPoint(x + 129, y + 89);
-		asteroid.addPoint(x + 139, y + 115);
-		asteroid.addPoint(x + 124, y + 118);
-		asteroid.addPoint(x + 120, y + 128);
-		asteroid.addPoint(x + 86, y + 124);
-		asteroid.addPoint(x +  20, y + 123);
+		asteroid.addPoint(x + 8, y + 45);
+		asteroid.addPoint(x + 2, y + 19);
+		asteroid.addPoint(x + 9, y + 6);
+		asteroid.addPoint(x + 25, y + 4);
+		asteroid.addPoint(x + 35, y + 5);
+		asteroid.addPoint(x + 44, y + 13);
+		asteroid.addPoint(x + 44, y + 30);
+		asteroid.addPoint(x + 47, y + 31);
+		asteroid.addPoint(x + 46, y + 40);
+		asteroid.addPoint(x +  10, y + 46);
 		
 		return asteroid;
 	}
@@ -79,9 +81,9 @@ public class Asteroid extends Polygon{
 	{
 		return shipImg;
 	}
-	public void draw(int x, int y) throws InterruptedException
+	public void draw(int x, int y) 
 	{
-		System.out.println(shipImg);
+		//System.out.println(shipImg);
 		g.drawImage(shipImg, x, y);
 	}
 	public boolean isAlive() {
