@@ -29,6 +29,8 @@ public class AsteroidGameScreen extends BasicGameState
 	private SpaceShip s;
 	private Missile m1, m2;
 	private boolean shot1, shot2 = false;
+	private int lives;
+	private int points;
 	private int missileCounter = 0;
 	private int i;
 	private int x;
@@ -42,18 +44,22 @@ public class AsteroidGameScreen extends BasicGameState
 
 	public void init(GameContainer gc, StateBasedGame sbg) throws SlickException
 	{
-		s = new SpaceShip(shipX,shipY);
-		m1 = new Missile();
-		m2 = new Missile();
-		ast = new Asteroid(50, 50);
-		asteroidRandX = rand.nextInt(700);
-		asteroidY = 50;
+		this.s = new SpaceShip(shipX,shipY);
+		this.m1 = new Missile();
+		this.m2 = new Missile();
+		this.ast = new Asteroid(50, 50);
+		this.lives = 3;
+		this.points = 0;
+		this.asteroidRandX = rand.nextInt(700);
+		this.asteroidY = 50;
 
 	}
 
 	public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException
 	{
-		g.drawString("This is the play state", 50, 50);
+		//g.drawString("This is the play state", 50, 50);
+		g.drawString("Lives: " + this.lives, 25, 25);
+		g.drawString("Points: " + this.points, 25, 40);
 		//Don't need the images here since they are already in the classes.
 		//Make a add missles method that resembles the add tiefighters method in my code, but only when you press spacebar of course
 

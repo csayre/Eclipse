@@ -57,6 +57,16 @@ public class Asteroid extends Polygon{
 		return asteroid;
 	}
 	
+	public boolean collision(int x, int y)
+	{
+		boolean collision = false;
+		if(asteroid.contains(x, y));
+		{
+			collision = true;
+			System.out.println("shot");
+		}
+		return collision;
+	}
 	
 	public float getX() {
 		return x;
