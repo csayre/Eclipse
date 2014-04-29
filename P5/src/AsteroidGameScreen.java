@@ -1,4 +1,5 @@
 import java.util.LinkedList;
+import java.util.Random;
 
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
@@ -25,7 +26,9 @@ public class AsteroidGameScreen extends BasicGameState
 	private Asteroid ast;
 	private SpaceShip s;
 	private Missile m;
-	private int i, x, y;
+	private int i;
+	private int x;
+	private int y;
 	private boolean shot = false;
 
 	public AsteroidGameScreen(int state)
@@ -36,7 +39,7 @@ public class AsteroidGameScreen extends BasicGameState
 	{
 		s = new SpaceShip(shipX,shipY);
 		m = new Missile();
-		asteroidImage = new Image("res/Asteroid1.png");
+		ast = new Asteroid(randomX(), randomY());
 	}
 
 	public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException
@@ -57,12 +60,16 @@ public class AsteroidGameScreen extends BasicGameState
 
 		//m.setMissileImg(missileImage);
 		m.Missile();
-		
-		g.drawImage(shipImage, shipX, shipY);
 
-		//asteroid
-		ast.draw(100, 200);
-		
+		g.drawImage(shipImage, shipX, shipY);
+		try {
+			ast.draw(randomX(), randomY());
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+
 		if(shot == true)
 		{
 			g.drawImage(m.getMissileImg(), missileX, missileY - 20);
@@ -77,8 +84,8 @@ public class AsteroidGameScreen extends BasicGameState
 		shipImage = new Image("res/AsteroidShip.png");
 		missileImage = new Image("res/Missile.png");
 
-		
-		
+
+
 
 		if(input.isKeyDown(Input.KEY_UP))
 		{
@@ -95,7 +102,7 @@ public class AsteroidGameScreen extends BasicGameState
 		if(input.isKeyDown(Input.KEY_RIGHT))
 		{
 			shipX += 1;
- 		}
+		}
 		if(input.isKeyDown(Input.KEY_G))
 		{
 			System.out.println(shipY);
@@ -138,4 +145,24 @@ public class AsteroidGameScreen extends BasicGameState
 	{
 		return 1;
 	}
+
+
+	public int randomX()
+	{
+		// max = 699
+		int ranX = 0;
+		Random ran = new Random();
+		ranX = ran.nextInt(699);
+		return ranX;
+	}
+	
+	public int randomY()
+	{
+		// max = 220
+		int ranY = 0;
+		Random ran = new Random();
+		ranY = ran.nextInt(220);
+		return ranY;
+	}
 }
+

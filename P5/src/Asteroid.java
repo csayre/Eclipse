@@ -10,6 +10,10 @@ import org.lwjgl.input.Mouse;
  * @author chrissayre
  *
  */
+/**
+ * @author csayre
+ *
+ */
 public class Asteroid extends Polygon{
 
 	private Polygon asteroid;
@@ -17,6 +21,7 @@ public class Asteroid extends Polygon{
 	private int x,y;
 	private Image shipImg;
 	private Graphics g;
+	private boolean isAlive;
 	
 	//Set image for the ship, then set polygon to around the image inside. Should work, if not then you're fucked
 	
@@ -29,6 +34,7 @@ public class Asteroid extends Polygon{
 	public Asteroid(int x,int y) throws SlickException{
 		this.x = x;
 		this.y = y;	
+		this.isAlive = true;
 		shipImg = new Image("res/Asteroid1.png");
 		g = new Graphics();
 	}
@@ -73,10 +79,19 @@ public class Asteroid extends Polygon{
 	{
 		return shipImg;
 	}
-	public void draw(int x, int y)
+	public void draw(int x, int y) throws InterruptedException
 	{
 		System.out.println(shipImg);
 		g.drawImage(shipImg, x, y);
 	}
+	public boolean isAlive() {
+		return isAlive;
+	}
+
+	public void setAlive(boolean isAlive) {
+		this.isAlive = isAlive;
+	}
+	
+	
 
 }
